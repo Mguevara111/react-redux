@@ -1,0 +1,641 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  background-color: black;
+  scroll-behavior: smooth;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  fill: white;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  color: cyan;
+}
+
+/* 9. Improve line wrapping */
+p,label {
+  text-wrap: pretty;
+  color: white;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+
+}
+svg{
+    width: 30px;
+    height: 30px;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+.high{
+    color: red;
+    font-size: 1.2rem;
+}
+.medium{
+    color: yellow;
+}
+.low{
+    color: lightgreen;
+}
+.body--light{
+  background-color: white;
+}
+a{
+  text-decoration: none;
+}
+.button{
+  max-height: 30px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: purple;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--mycyan);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem 0;
+}
+.button:hover{
+  background-color: white;
+  color: #4B0082;
+}
+@media screen and (min-width:75em) {
+  .button{
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+  }
+}
+h1,h2,h3,p,b{
+  color: var(--mycyan);
+}
+:root{
+  --mycyan:rgba(0, 255, 255, 1);
+  --indigo:#4B0082;
+  --myviolet:#8A2BE2;
+}
+/**********header****************/
+.header{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 300;
+}
+.header__logo{
+    width: 80px;
+    height: 60px;
+    object-fit: contain;
+    object-position: center;
+    cursor: pointer;
+}
+.header__icons{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__logged{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__logged > svg,
+.header__logged > p{
+  fill: violet;
+  color: cyan;
+}
+/*********dashboard***************/
+.dashboard{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.dashboard--inactive{
+  filter: blur(2rem);
+  opacity: 0;
+  pointer-events: none;
+}
+.dashboard__task{
+    width: 230px;
+    height: 250px;
+    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem gray;
+    border:thick solid;
+    border-image: linear-gradient(to right, purple, #4ecdc4) 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    position: relative;
+}
+.dashboard__task:hover{
+  width: 235px;
+  height: 255px;
+}
+@media screen and (min-width:75em) {
+  .dashboard__task{
+    width: 200px;
+    height: 200px;
+  }
+}
+.dashboard__task h2{
+  width: 100%;
+  max-height: 72px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  
+}
+.dashboard__priority{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard__priority > svg{
+  fill:red;
+}
+.dashboard__taskbox{
+  /**********div que muestra selected***********/
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top:0;
+  left: 0;
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+.dashboard__taskbox--show{
+  visibility: visible;
+  opacity: 1;
+}
+.dashboard__taskbox svg{
+  width: 70px;
+  height: 70px;
+  fill: green;
+}
+
+.dashboard__menu{
+  width: 280px;
+  height: calc(100vh - 90px);
+  position: fixed;
+  z-index: 70;
+  top:90px;
+  left: 0;
+  border-radius: 1rem;
+  background-color: var(--indigo);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: thin solid white; */
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.dashboard__menu--show{
+  opacity: 1;
+  animation: movemenu 2s linear forwards;
+}
+@keyframes movemenu {
+  0%{
+    transform: translateX(-100%);
+  }
+  50%{
+    transform: translateX(-50%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.dashboard__taskcards{
+  max-width: 1200px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/***********************singletask***********/
+.singletask{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.singletask__content{
+  width: clamp(200px,500px,550px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: thick solid;
+  border-image: linear-gradient(to left, white, purple) 1;
+}
+
+.singletask__tasks{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+.st{
+  width: 120px;
+  height: 120px;
+  background-color: var(--indigo);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: thin solid white;
+  margin:0.5rem 1rem;
+  border-radius: 1rem;
+}
+@media screen and (min-width:30em) {
+  .st{
+    margin: 0 1rem;
+  }
+}
+
+.st:hover{
+  width: 130px;
+  height: 130px;
+  background-color: black;
+  box-shadow: 0.5rem 0.5rem 0.5rem grey;
+  border-radius: 1rem;
+}
+
+
+/****************stats info******************/
+.statsinfo{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.statsinfo__container{
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: thick solid purple;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: purple;
+}
+.statsinfo__data{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.statsinfo__data > p{
+  color: cyan;
+  margin: 0.2rem 0.5rem;
+}
+
+
+/**************filterbar**********************/
+.filterbar{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.filterbar h2{
+  color: white;
+}
+.filterbar__ps{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+.filterbar__filters{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.filterbar__filter{
+  margin: 0.5rem;
+}
+.filterbar__filter > label{
+  margin: 1rem;
+}
+.filterbar__filter input{
+  width: 150px;
+}
+.filterbar__filterdate{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.filterbar__dateinput{
+  width: 110px;
+}
+.filterbar__datecontainer{
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr);
+  align-items: center;
+  justify-items: center;
+}
+/*****************message***********************/
+.message{
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  top: 0;
+  z-index: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.message > h2{
+  color: black;
+  
+}
+/****************login*********************************/
+.login{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: thick solid cyan;
+}
+.login > img{
+  width: 120px;
+  height: 70px;
+  object-fit: contain;
+  object-position: center;
+}
+.login__content{
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.login b{
+  color: cyan;
+}
+.login__btn{
+  width: 120px;
+  height: 30px;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: cyan;
+  margin: 1rem;
+  background-color: grey;
+}
+/**************loader**********************/
+.loader__container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        animation: rotate 1s linear infinite
+}
+.loader::before , .loader::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+        border: 5px solid violet;
+        animation: prixClipFix 2s linear infinite ;
+}
+.loader::after{
+        transform: rotate3d(90, 90, 0, 180deg );
+        border-color: cyan;
+}
+
+@keyframes rotate {
+        0%   {transform: rotate(0deg)}
+        100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+          0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+          50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+          75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+}
+/*****************stats*****************/
+.stats{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: thick solid;
+  border-image: linear-gradient(to right, white, purple) 1;
+}
+.stats__info{
+  min-width: auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8A2BE2;
+  border-radius: 1rem;
+}
+.stats__info > p{
+  margin: 0.5rem;
+}
+.stats__gp{
+  max-width: 430px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:0.5rem 2rem;
+}
+.stats__graphs{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.stats__stats{
+  max-width: 370px;
+  max-height: 370px;
+}
+/**************hamburger**************/
+.hamburger{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  z-index: 999;
+}
+
+@media screen and (min-width:48em) {
+  .hamburger{
+    right: 3rem;
+  }
+}
+
+/***************actions***************/
+.actions{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.actions__option{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.actions svg{
+  fill: purple;
+}
+.actions h2{
+  color: white;
+}
+/********************addtaskmodal******************/
+.addtaskmodal{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 300;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addtaskmodal__content{
+  width: 310px;
+  height: 320px;
+  border: thick solid;
+  border-image: linear-gradient(to right, purple, #4ecdc4) 1;
+  background-color: rgba(51, 51, 51, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addtaskmodal__form{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addtaskmodal__form p,
+.addtaskmodal__form span{
+  color: white;
+}
+.addtaskmodal__form input{
+  margin: 0.5rem;
+}
