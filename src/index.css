@@ -639,3 +639,33 @@ h1,h2,h3,p,b{
 .addtaskmodal__form input{
   margin: 0.5rem;
 }
+/**************error**********************/
+.e404{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./assets/images/error404.jpg');
+  background-position:top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: move404 5s ease-in-out alternate infinite;
+}
+@keyframes move404{
+  0%{
+    background-position:top;
+  }
+  50%{
+    background-position:center;
+  }
+  100%{
+    background-position:bottom;
+  }
+}
+.e404btn{
+  width: 120px;
+  height: 90px;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
