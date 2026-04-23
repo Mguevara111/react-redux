@@ -50,8 +50,8 @@ export const myslice=createSlice({
             state.filter.search='',
             state.filter.sortbydate={datebegin:'',dateend:''}
         },
-        toogleTheme:()=>{
-
+        toggleTheme:(state,action)=>{
+            state.darkmode=action.payload
         },
         setDate:(state,action)=>{
             //filtro de fecha
@@ -99,7 +99,7 @@ export const {addTask,
             updateTaskStatus,
             deleteAll,
             setSearch,
-            toogleTheme,
+            toggleTheme,
             setDate,
             setPriority,
             resetfilters,

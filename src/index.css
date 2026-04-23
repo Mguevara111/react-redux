@@ -68,10 +68,10 @@ svg{
     font-size: 1.2rem;
 }
 .medium{
-    color: yellow;
+    color: darkgoldenrod;
 }
 .low{
-    color: lightgreen;
+    color: lightblue;
 }
 .body--light{
   background-color: white;
@@ -107,6 +107,7 @@ a{
 h1,h2,h3,p,b{
   color: var(--mycyan);
 }
+
 :root{
   --mycyan:rgba(0, 255, 255, 1);
   --indigo:#4B0082;
@@ -125,6 +126,7 @@ h1,h2,h3,p,b{
     top: 0;
     z-index: 300;
 }
+
 .header__logo{
     width: 80px;
     height: 60px;
@@ -181,10 +183,7 @@ h1,h2,h3,p,b{
     margin: 1rem;
     position: relative;
 }
-.dashboard__task:hover{
-  width: 235px;
-  height: 255px;
-}
+
 @media screen and (min-width:75em) {
   .dashboard__task{
     width: 200px;
@@ -528,8 +527,9 @@ h1,h2,h3,p,b{
 }
 .stats__info{
   min-width: auto;
-  height: 50px;
+  min-height: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: #8A2BE2;
@@ -668,4 +668,18 @@ h1,h2,h3,p,b{
   height: 90px;
   font-size: 1.5rem;
   padding: 0.5rem;
+}
+.lightback{
+  /************modo claro****************/
+  background-color: white;
+  
+}
+.lightsvg{
+  fill: black;
+}
+.lightfont{
+  color:black;
+}
+.lightham{
+  background-color: black;
 }
