@@ -1,16 +1,47 @@
-# React + Vite
+[Español]
+Dashboard de Operaciones Críticas (Critical Ops Dashboard)
+Este proyecto es un panel de control avanzado para la gestión de tareas prioritarias, desarrollado con React y Redux Toolkit. Se enfoca en el manejo de estados globales complejos, filtrado dinámico y arquitectura limpia.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Características Principales
+Gestión de Estado Robusta: Implementación de initialState multizona (items, filters, ui, stats).
 
-Currently, two official plugins are available:
+Filtrado Avanzado: Sistema de búsqueda en tiempo real, ordenamiento por fecha y filtrado por prioridad (high, medium, low).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Acciones de Masa: Función massDeleteDone para limpieza eficiente de registros.
 
-## React Compiler
+UI Dinámica: Soporte nativo para Modo Oscuro (Dark Mode) y persistencia de estado visual.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Métricas en Tiempo Real: Cálculo automático de tareas críticas y pendientes mediante selectores.
 
-## Expanding the ESLint configuration
+🛠️ Stack Tecnológico
+Frontend: React 18
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Estado Global: Redux Toolkit (RTK)
+
+Estilos: CSS3
+
+Despliegue: GitHub Pages
+
+[English]
+Critical Ops Dashboard
+An advanced management dashboard for priority tasks, built with React and Redux Toolkit. This project demonstrates the implementation of complex global state management, dynamic filtering, and clean architecture.
+
+🚀 Key Features
+Robust State Management: Multi-zone initialState implementation (items, filters, ui, stats).
+
+Advanced Filtering: Real-time search, date sorting, and priority-based filtering (high, medium, low).
+
+Bulk Actions: massDeleteDone functionality for efficient record cleanup.
+
+Dynamic UI: Native Dark Mode support and visual state persistence.
+
+Real-time Metrics: Automatic calculation of critical and pending tasks using memoized selectors.
+
+🛠️ Tech Stack
+Frontend: React 18
+
+State Management: Redux Toolkit (RTK)
+
+Styling: CSS3
+
+Deployment: GitHub Pages

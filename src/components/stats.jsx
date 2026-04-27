@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Chartsstate } from "./chartsstate";
 import { Chartspriority } from "./chartspriority";
+import { gettheme } from "../hooks/usechangetheme";
 
 
 export function Stats(){
     let stats=useSelector((state)=>state.generalState.stats)
+    const theme=gettheme()
     
     return(
-        <section className="stats">
-            <h2>Stats</h2>
+        <section className={`stats ${!theme?'lightback':''}`}>
+            <h2 className={`${!theme?'lightfont':''}`}>Stats</h2>
             <article className="stats__info">
                 
                 <p><b>Total Tasks:</b>{stats.totaltasks}</p>
@@ -23,12 +25,12 @@ export function Stats(){
             </Link>
             <article className="stats__graphs">
                 <div className="stats__gp">
-                    <h2>Status</h2>
-                    <Chartsstate></Chartsstate>
+                    <h2 className={`${!theme?'lightfont':''}`}>Status</h2>
+                    <Chartsstate lightcontent={`${!theme?false:true}`}></Chartsstate>
                 </div>
                 <div className="stats__gp">
-                    <h2>Priority</h2>
-                    <Chartspriority></Chartspriority>
+                    <h2 className={`${!theme?'lightfont':''}`} >Priority</h2>
+                    <Chartspriority lightcontent={`${!theme?false:true}`}></Chartspriority>
                 </div>
             </article>
         </section>

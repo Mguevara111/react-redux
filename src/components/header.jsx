@@ -25,7 +25,7 @@ export function Header(){
 
     const handlechangetheme=(e)=>{
         if(e.target.dataset.theme === 'dark'){
-            console.log('light')
+            //console.log('light')
             dispatch(toggleTheme(false))
             return
         }

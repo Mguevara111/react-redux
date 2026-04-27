@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { setMessage,toggleLoading,setUserloged } from "../app/conterslice";
 import { Loader } from "./loader";
 import { useNavigate } from "react-router-dom";
+import { gettheme } from "../hooks/usechangetheme";
 import logo from '../assets/images/logonbg.png'
 
 const initialform={
@@ -18,6 +19,7 @@ export function Login(){
     const [formdata,setFormdata]=useState(initialform)
 
     const isloading=useSelector((state)=>state.generalState.isloading)
+    const theme=gettheme();
 
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -28,7 +30,7 @@ export function Login(){
             [e.target.name]:e.target.value
         })
     }
-    // ****************************poner un mensaje cuandoel usuario se deslogee***************
+    
     const handlesubmit=async(e)=>{
         e.preventDefault();
         try {
@@ -39,6 +41,10 @@ export function Login(){
             dispatch(setUserloged(
                 res.username
             ))
+            dispatch(setMessage({
+                message:`Welcome ${res.username}`,
+                color:'green'
+            }))
             navigate('/')
         } catch (error) {
             dispatch(setMessage({
@@ -57,15 +63,15 @@ export function Login(){
     }
 
     return(
-        <section className="login">
-            <h2>Login</h2>
+        <section className={`login ${!theme?'lightback':''}`}>
+            <h2 className={`${!theme?'lightfont':''}`}>Login</h2>
             <img src={logo} alt="logo" />
-            <p>for testing use user , user</p>
+            <p className={`${!theme?'lightfont':''}`}>for testing use user , user</p>
             <article className="login__content">
                 <form action="" onSubmit={handlesubmit}>
-                    <p><b>User</b></p>
+                    <p><b className={`login__b ${!theme?'lightfont':''}`}>User</b></p>
                     <input type="text" name="user" value={formdata.user} onChange={handlechange} autoComplete="off"/>
-                    <p><b>Password</b></p>
+                    <p><b className={`login__b ${!theme?'lightfont':''}`}>Password</b></p>
                     <input type="password" name="password" value={formdata.password} onChange={handlechange} autoComplete="off"/>
                     <br />
                     <button className="login__btn" type="submit">Submit</button>

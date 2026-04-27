@@ -3,6 +3,7 @@ import { useState } from "react";
 import { addTask } from "../app/conterslice";
 import { setMessage } from "../app/conterslice";
 import { useDispatch } from "react-redux";
+import { gettheme } from "../hooks/usechangetheme";
 
 const initialform={
     id:'',
@@ -17,6 +18,7 @@ export function Addtaskmodal({deactivemodal}){
 const [forminfo,setForminfo]=useState(initialform)
 
 const dispatch=useDispatch();
+const theme=gettheme();
 
 const verifyformdata=(formcontent)=>{
         let flag=true
@@ -79,7 +81,7 @@ const verifyformdata=(formcontent)=>{
     }
 
     return(
-        <section className="addtaskmodal">
+        <section className={`addtaskmodal ${!theme?'lightback':''}`}>
             <article className="addtaskmodal__content">
                 <div className="addtaskmodal__closebtn">
                     <button className="button" onClick={()=>deactivemodal(false)}>X</button>

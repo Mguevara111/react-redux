@@ -24,7 +24,7 @@ ChartJS.register(
 const labels=['Low','Medium','High']
 
 
-export function Chartspriority(){
+export function Chartspriority({lightcontent}){
   const stats=useSelector((state)=>state.generalState.stats)
   let datapriority=[stats.totallow,stats.totalmedium,stats.totalhigh]
   
@@ -35,7 +35,7 @@ const data = {
     {
       label: 'Priority',
       data: datapriority,
-      backgroundColor: 'rgba(54, 162, 235, 0.8)',
+      backgroundColor: lightcontent?'rgba(0,0,255,0.7)':'rgba(54, 162, 235, 0.9)',
     }
   ]
 };
@@ -43,17 +43,17 @@ const data = {
 const optionsBar = {
   scales: {
     y: {
-      ticks: { color: '#00FFFF' }, // Tus letras en Cyan
-      grid: { color: 'rgba(255, 255, 200, 0.8)' } // Líneas horizontales muy tenues
+      ticks: { color: lightcontent?'#000':'#00FFFF' }, // Tus letras en Cyan
+      grid: { color: lightcontent?'#000':'rgba(255, 255, 200, 0.8)' } // Líneas horizontales muy tenues
     },
     x: {
-      ticks: { color: '#00FFFF' }, // Tus etiquetas en Violeta
+      ticks: { color: lightcontent?'#000':'#00FFFF' }, // Tus etiquetas en Violeta
       grid: { display: false } // Quitamos las líneas verticales para que sea más limpio
     }
   },
   plugins: {
     legend: {
-      labels: { color: '#00FFFF' } // El texto de "Priority" en Cyan
+      labels: { color: lightcontent?'#000':'#00FFFF' } // El texto de "Priority" en Cyan
     }
   }
 };

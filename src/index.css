@@ -113,6 +113,7 @@ h1,h2,h3,p,b{
   --indigo:#4B0082;
   --myviolet:#8A2BE2;
 }
+
 /**********header****************/
 .header{
     width: 100%;
@@ -156,11 +157,11 @@ h1,h2,h3,p,b{
 /*********dashboard***************/
 .dashboard{
     width: 100%;
-    height: auto;
+    min-height: calc(100vh - 90px);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     cursor: pointer;
 }
@@ -278,7 +279,7 @@ h1,h2,h3,p,b{
 /***********************singletask***********/
 .singletask{
   width: 100%;
-  height: auto;
+  min-height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: start;
@@ -293,7 +294,10 @@ h1,h2,h3,p,b{
   border: thick solid;
   border-image: linear-gradient(to left, white, purple) 1;
 }
-
+.stc--light{
+  border: thick solid;
+  border-image: linear-gradient(to left, black, purple) 1;
+}
 .singletask__tasks{
   width: 100%;
   height: auto;
@@ -460,7 +464,7 @@ h1,h2,h3,p,b{
   height: auto;
   text-align: center;
 }
-.login b{
+.login__b{
   color: cyan;
 }
 .login__btn{
@@ -673,6 +677,9 @@ h1,h2,h3,p,b{
   /************modo claro****************/
   background-color: white;
   
+}
+.darkback{
+  background-color: black;
 }
 .lightsvg{
   fill: black;

@@ -9,9 +9,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const labelspie=['Pending', 'Realiced']
 
 
-export function Chartsstate(){
+export function Chartsstate({lightcontent}){
   const stats=useSelector((state)=>state.generalState.stats)
-  console.log(stats.totaltasks)
+  //console.log(lightcontent)
   let datastatus=[stats.totalpending,stats.totalrealiced]
   
   const datapie = {
@@ -21,8 +21,8 @@ export function Chartsstate(){
       label: 'Tasks Status',
       data:datastatus,
       backgroundColor: [
-        'rgba(153, 102, 255, 0.8)',
-        'rgba(54, 162, 235, 0.8)',
+        lightcontent?'rgba(128,0,128,0.9)':'rgba(153, 102, 255, 0.9)',
+        lightcontent?'rgba(0,0,255,0.7)':'rgba(54, 162, 235, 0.9)',
         'rgba(255, 99, 132, 0.8)',
         'rgba(255, 206, 86, 0.8)',
         'rgba(75, 192, 192, 0.8)',
@@ -46,7 +46,7 @@ const optionsPie = {
     legend: {
       position: 'bottom', // Opcional: poner la leyenda abajo se ve muy bien en Dashboards
       labels: {
-        color: '#00FFFF', // Color de las letras de la leyenda
+        color: lightcontent?'#000':'#00FFFF', // Color de las letras de la leyenda
         padding: 20,
         font: { size: 14 }
       }

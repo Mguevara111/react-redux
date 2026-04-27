@@ -3,10 +3,12 @@ import { useEffect,useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { gettheme } from "../hooks/usechangetheme";
 
 export function Singletask(){
     const [singletask,setSingletask]=useState({});
     let tasks=useSelector((state)=>state.generalState.tasks)
+    const theme=gettheme()
     
     let location=useLocation()
     const {state}=location
@@ -21,9 +23,9 @@ export function Singletask(){
 
     
     return(
-        <section className="singletask">
-            <article className="singletask__content">
-                <h2>Task:{singletask.name}</h2>
+        <section className={`singletask ${!theme?'lightback':''}`}>
+            <article className={`singletask__content ${!theme?'lightback':''} ${!theme?'stc--light':''}`}>
+                <h2 className={`${!theme?'lightfont':''}`} >Task:{singletask.name}</h2>
 
                 <article className="singletask__tasks">
 
